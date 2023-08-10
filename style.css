@@ -1,0 +1,50 @@
+
+/******ESTILADO NAV BAR*******/
+.mi-nav {
+    padding: 1rem;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+.icono {
+    margin: 0.5rem;
+}
+
+.iconoChart {
+    color: aliceblue;
+}
+
+/*******CLASE OCULTO*********/
+.oculto {
+    /* display: block; */
+    display: none;
+}
+
+.mostrar {
+    display: block;
+}
+
+a {
+    text-decoration: none;
+}
+
+.success {
+    color: green;
+}
+
+.success::before {
+    content: '+';
+}
+
+.danger {
+    color: red;
+}
+
+.danger::before {
+    content: '-';
+}
+
+
+/*
+
+*/

@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
+    />
+    <title>Ahorradas</title>
+  </head>
+  <body class="bg-light">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark mi-nav">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#" id="btn-ahorradas">
+          <i class="fa-solid fa-wallet icono"></i>AhorrADAs</a
+        >
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div
+          class="collapse navbar-collapse justify-content-end"
+          id="navbarNav"
+        >
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a
+                id="btnBalance"
+                class="nav-link active"
+                aria-current="page"
+                href="#"
+              >
+                <i class="fa-solid fa-chart-simple icono"></i>
+                Balance</a
+              >
+            </li>
+            <li class="nav-item">
+              <a id="btnCategorias" class="nav-link" href="#">
+                <i class="fa-solid fa-tag icono"></i>
+                Categorias</a
+              >
+            </li>
+            <li class="nav-item">
+              <a id="btnReportes" class="nav-link" href="#">
+                <i class="fa-solid fa-chart-pie icono"></i>
+                Reportes</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- BALANCE -->
+
+    <div class="container my-5" id="seccion-balance">
+      <div class="row">
+        <div class="col-sm-12 col-md-3">
+          <div class="row shadow p-3 mb-5 bg-body rounded">
+            <h1>Balance</h1>
+            <table class="table table-borderless" id="balance"></table>
+          </div>
+          <div class="row shadow p-3 mb-5 bg-body rounded">
+            <div class="d-flex justify-content-between">
+              <h2>Filtros</h2>
+              <div id="btn-ocultar-filtros" class="mt-2">
+                <a href="#">Ocultar Filtros</a>
+              </div>
+              <div id="btn-mostrar-filtros" class="oculto mt-2">
+                <a href="#"> Mostrar Filtros</a>
+              </div>
+            </div>
+            <div id="filtros">
+              <!--AGREGO DIV ID-->
+              <form action="">
+                <div class="">
+                  <label for="tipo" class="form-label">Tipo</label>
+                  <select
+                    id="selectTipoFiltros"
+                    class="form-select"
+                    aria-label="Default select example"
+                  >
+                    <option value="todos" selected id="filtro-todos">
+                      Todos
+                    </option>
+                    <option value="gasto" id="filtro-gasto">Gasto</option>
+                    <option value="ganancia" id="filtro-ganacia">
+                      Ganancia
+                    </option>
+                  </select>
+                </div>
+                <div class="my-1">
+                  <label for="selectCategoriaFiltros" class="form-label"
+                    >Categoria</label
+                  >
+                  <select
+                    id="selectCategoriaFiltros"
+                    class="filtro-categorias select-categorias form-select"
+                    aria-label="selector de categoria"
+                  ></select>
+                </div>
+                <div>
+                  <label for="por-fecha" class="form-label">Desde</label>
+                  <input
+                    type="date"
+                    class="form-control"
+                    id="por-fecha"
+                    aria-describedby="desde"
+                  />
+                </div>
+                <div class="my-1">
+                  <label for="ordenar-por" class="form-label"
+                    >Ordenar por</label
+                  >
+                  <select
+                    id="ordenar-por"
+                    class="form-select"
+                    aria-label="ordenar-por"
+                  >
+                    <option value="mas-reciente" selected>Más reciente</option>
+                    <option value="menos-reciente">Menos reciente</option>
+                    <option value="mayor-monto">Mayor monto</option>
+                    <option value="menor-monto">Menor monto</option>
+                    <option value="a-z">A/Z</option>
+                    <option value="z-a">Z/A</option>
+                  </select>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-12 col-md-8 shadow p-3 mb-5 mx-auto bg-body rounded">
+          <div class="d-flex justify-content-between">
+            <h3>Operaciones</h3>
+            <button
+              type="button"
+              class="btn btn-primary"
+              id="btn-nueva-operacion"
+            >
+              + Nueva operación
+            </button>
+          </div>
+
+          <div id="con-operaciones" class="container text-center my-3">
+            <div class="row align-items-start">
+              <div class="col">
+                <strong>Descripción</strong>
+              </div>
+              <div class="col">
+                <strong>Categorias</strong>
+              </div>
+              <div class="col">
+                <strong>Fecha</strong>
+              </div>
+              <div class="col">
+                <strong>Monto</strong>
+              </div>
+              <div class="col">
+                <strong>Acciones</strong>
+              </div>
+            </div>
+          </div>
+          <div class="container text-center" id="operaciones"></div>
+          <div
+            class="figure d-flex flex-column align-items-center"
+            id="sin-operaciones"
+          >
+            <img
+              src="./images/wallet.svg"
+              class="figure-img img-fluid rounded"
+              alt="graficos"
+              style="width: 20em"
+            />
+            <h4>Sin resultados</h4>
+            <p>Cambia los filtros o agrega operaciones</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- NUEVA OPERACION -->
+
+    <div class="container my-5 oculto" id="seccion-operacion">
+      <!--AGREGUE CLASE OCULTO-->
+      <div class="row justify-content-center shadow p-3 mb-5 bg-body rounded">
+        <div class="col-md-8">
+          <h1>Nueva operación</h1>
+          <form>
+            <div class="mb-3">
+              <label for="descripcion" class="form-label">Descripción</label>
+              <input
+                type="text"
+                class="form-control"
+                id="descripcion"
+                aria-describedby="descripcion"
+              />
+            </div>
+            <div class="mb-3">
+              <label for="monto" class="form-label">Monto</label>
+              <input type="number" class="form-control" id="monto" />
+            </div>
+            <div class="mb-3">
+              <label for="tipo" class="form-label">Tipo</label>
+              <select id="tipo" class="form-select" aria-label="Tipo">
+                <option value="gasto" selected>Gasto</option>
+                <option value="ganancia">Ganancia</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label for="categoria" class="form-label">Categoria</label>
+              <select
+                id="selectCategoriaOperacion"
+                class="select-categorias form-select"
+                aria-label="Select categorias"
+              >
+                <!--cambio nombre id selectCategoriaOperacion-->
+              </select>
+            </div>
+            <div class="mb-3">
+              <label for="fecha" class="form-label">Fecha</label>
+              <input
+                type="date"
+                class="form-control"
+                id="fecha-input"
+                aria-describedby="fecha"
+              />
+            </div>
+            <div class="mb-3">
+              <button type="button" class="btn btn-primary" id="agregar-btn">
+                Agregar
+              </button>
+              <button
+                type="submit"
+                class="btn btn-light"
+                id="btn-cancelar-cargar-operacion"
+              >
+                Cancelar
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <div class="toast-container position-fixed bottom-0 end-0 p-3">
+        <div
+          id="liveToast"
+          class="toast"
+          role="alert"
+          aria-live="assertive"
+          aria-atomic="true"
+        >
+          <div class="toast-header text-bg-danger">
+            <strong class="me-auto">Aviso Ahorradas</strong>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="toast"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="toast-body">
+            Es necesario que completes todo el formulario.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--FORMULARIO EDITAR OPERACION-->
+
+    <div class="container my-5 oculto" id="seccion-editar-operacion">
+      <!--AGREGUE CLASE OCULTO-->
+      <div class="row justify-content-center shadow p-3 mb-5 bg-body rounded">
+        <div class="col-md-8">
+          <h1>Editar operación</h1>
+          <form>
+            <div class="mb-3">
+              <label for="descripcion" class="form-label">Descripción</label>
+              <input
+                type="text"
+                class="form-control"
+                id="descripcion-editar"
+                aria-describedby="descripcion"
+              />
+            </div>
+            <div class="mb-3">
+              <label for="monto" class="form-label">Monto</label>
+              <input type="number" class="form-control" id="monto-editar" />
+            </div>
+            <div class="mb-3">
+              <label for="tipo" class="form-label">Tipo</label>
+              <select
+                id="tipo-editar"
+                class="form-select"
+                aria-label="Default select example"
+              >
+                <option value="gasto" selected>Gasto</option>
+                <option value="ganancia">Ganancia</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label for="categoria" class="form-label">Categoria</label>
+              <select
+                id="categoria-editar"
+                class="form-select select-categorias"
+                aria-label="Default select example"
+              >
+                <!--cambio nombre id selectCategoriaOperacion-editar-->
+                <!--EXISTEN EN JS-->
+                <!-- <option selected>Comida</option>
+                <option value="Servicios">Servicios</option>
+                <option value="Salidas">Salidas</option>
+                <option value="Educacion">Educacion</option>
+                <option value="Transporte">Transporte</option>
+                <option value="Trabajo">Trabajo</option> -->
+
+                <!--aca se tienen que aparecer las categorias nuevas agregadas por el usuario-->
+              </select>
+            </div>
+            <div class="mb-3">
+              <label for="fecha" class="form-label">Fecha</label>
+              <input
+                type="date"
+                class="form-control"
+                id="fecha-editar"
+                aria-describedby="fecha"
+              />
+            </div>
+            <div class="mb-3">
+              <button
+                type="submit"
+                class="btn btn-primary"
+                id="btn-editar-operacion"
+              >
+                Editar
+              </button>
+              <button
+                type="submit"
+                class="btn btn-light"
+                id="btn-cancelar-operacion"
+              >
+                Cancelar
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- CATEGORIAS -->
+
+    <div class="container my-5 oculto" id="seccion-categorias">
+      <!--AGREGO CLASS OCULTO-->
+      <div class="row justify-content-center shadow p-3 mb-6 bg-body rounded">
+        <div class="col-md-8 w-100">
+          <h1>Categorias</h1>
+          <form>
+            <label for="nombre" class="form-label">Nombre</label>
+            <div class="d-flex justify-content-between w-100">
+              <div class="w-100">
+                <input
+                  type="text"
+                  class="form-control"
+                  name="categoria"
+                  id="nueva-categoria-input"
+                  aria-describedby="Ingresa nombre de nueva categoria"
+                />
+              </div>
+              <div class="mx-3 d-flex align-items-center">
+                <button
+                  type="button"
+                  class="btn btn-primary"
+                  id="btn-agregar-categoria"
+                >
+                  Agregar
+                </button>
+              </div>
+            </div>
+          </form>
+          <div class="my-2" id="categorias"></div>
+        </div>
+      </div>
+    </div>
+
+    <!--EDITAR CATEGORIA-->
+    <div class="container my-5 w-75 oculto" id="seccion-editar-categorias">
+      <!--AGREGO CLASS OCULTO-->
+      <div class="row justify-content-center shadow p-3 mb-6 bg-body rounded">
+        <div class="col-md-8 w-100">
+          <h1>Editar Categoria</h1>
+          <form>
+            <label for="nombre" class="form-label">Nombre</label>
+            <div class="justify-content-between w-100">
+              <div class="w-100">
+                <input
+                  type="text"
+                  class="form-control"
+                  name="categoria"
+                  id="editar-categoria-input"
+                  aria-describedby="categoria a editar"
+                />
+              </div>
+              <div class="mx-1 d-flex my-3 justify-content-md-end">
+                <button type="button" class="btn btn-light" id="cancelar">
+                  Cancelar
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-primary"
+                  id="btn-editar-categoria"
+                >
+                  Editar
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- REPORTES -->
+
+    <div class="container my-5 col-md-8 w-80 oculto" id="seccion-reportes">
+      <!--agrego class oculto-->
+      <div class="row justify-content-center shadow p-3 mb-5 bg-body rounded">
+        <div class="col-md-12">
+          <h2 class="mb-3 fw-bold fs-1">Reportes</h2>
+          <div class="figure d-flex flex-column align-items-center">
+            <div id="operaciones-insuficientes" class="oculto">
+              <img
+                src="./images/chart.svg"
+                class="figure-img img-fluid rounded"
+                alt="graficos"
+                style="width: 20em"
+              />
+              <h4>Operaciones insuficientes</h4>
+              <p>Prueba agregando más operaciones</p>
+              <!-- mostara reportes de operaciones-->
+            </div>
+            <div id="contenedor-reportes" class="oculto col-md-8 w-100">
+              <h3 class="mt-5 m-4">Resumen</h3>
+              <div id="categoria-mayor-ganancia"></div>
+              <!--TRAER NOMBRE DE CATEGORIA Y MONTO-->
+
+              <div id="categoria-mayor-gasto"></div>
+              <div id="categoria-mayor-balance"></div>
+              <div id="mes-mayor-ganancia"></div>
+              <div id="mes-mayor-gasto"></div>
+
+              <h3 class="mt-5 m-4">Totales por categorías</h3>
+              <div class="row align-items-start m-4">
+                <div class="col text-start">
+                  <strong>Categoria</strong>
+                </div>
+                <div class="col text-end">
+                  <strong>Ganancias</strong>
+                </div>
+                <div class="col text-end">
+                  <strong>Gastos</strong>
+                </div>
+                <div class="col text-end">
+                  <strong>Balance</strong>
+                </div>
+              </div>
+              <div id="totales-por-categoria"></div>
+
+              <h3 class="mt-5 m-4">Totales por mes</h3>
+                <div class="row align-items-start m-4">
+                  <div class="col">
+                    <strong>Mes</strong>
+                  </div>
+                  <div class="col text-end">
+                    <strong>Ganancia</strong>
+                  </div>
+                  <div class="col text-end">
+                    <strong>Gasto</strong>
+                  </div>
+                  <div class="col text-end">
+                    <strong>Balance</strong>
+                  </div>
+                </div>
+              <div id="totales-por-mes"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/uuid/8.1.0/uuidv4.min.js"
+      integrity="sha512-Bcog7KQsuePA92aZHcQfeAp3w4BiUKHgihhKJLsSVVU67s7KspPbywP7nTMZtJ8YOn//vLCeWvYnb00KryziDA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+      crossorigin="anonymous"
+    ></script>
+    <script src="./app.js"></script>
+  </body>
+</html>
