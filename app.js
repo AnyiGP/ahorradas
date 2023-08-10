@@ -23,7 +23,7 @@ const inputFecha = document.getElementById("fecha-input");
 const acciones = document.getElementById("acciones");
 const inputEditar = document.getElementById("editar-categoria-input");
 
-//editar operacion
+//EDITAR OPERACION
 const descripcionEditar = document.getElementById("descripcion-editar");
 const montoEditar = document.getElementById("monto-editar");
 const tipoEditar = document.getElementById("tipo-editar");
