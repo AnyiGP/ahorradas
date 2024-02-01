@@ -51,7 +51,10 @@
 ### 👩‍💻 Paleta de colores
 ![image](#)
 
-Te dejo el link para que visites mi sitio [Proyecto Final Modulo 3 - 4](https://ruthponteprino.github.io/ahorradas/)
+
+Te dejo el link para que visites mi sitio [Proyecto Final Modulo 3 - 4](https://anyigp.github.io/ahorradas/)
+
+Te dejo el link del repo original de mi compañera para que veas mis commits ya que trabajamos en su cuenta [Proyecto Final Modulo 3 - 4](https://github.com/ruthponteprino/ahorradas/)
 
 ![Divider gif](https://media1.giphy.com/media/xT0GqKaASLordVtYCk/giphy.gif)
 
